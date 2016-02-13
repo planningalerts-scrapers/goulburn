@@ -77,7 +77,7 @@ for ($i = 1; $i <= $NumPages; $i++) {
         # Put all information in an array
         $application = array (
             'council_reference' => trim($record->find('a',0)->plaintext),
-            'address'           => preg_replace('/\s+/', ' ', trim($record->find("a", 1)->plaintext)) . ", Australia",
+            'address'           => preg_replace('/\s+/', ' ', trim($record->find("a", 1)->plaintext)),
             'description'       => preg_replace('/\s+/', ' ', trim($record->find("td", 2)->plaintext)),
             'info_url'          => $info_url . trim($record->find('a',0)->plaintext),
             'comment_url'       => $info_url . trim($record->find('a',0)->plaintext),
