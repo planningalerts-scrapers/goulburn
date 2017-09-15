@@ -29,7 +29,7 @@ $browser = new PGBrowser();
 $page = $browser->get($da_page);
 $dom = HtmlDomParser::str_get_html($page->html);
 
-# By default, assume it is single page, otherwise, put all pagnation info in an array
+# By default, assume it is single page, otherwise, calculate how many pages are there
 $NumPages = count($dom->find('tr[class=pagerRow] a'));
 if ($NumPages === 0) {
     $NumPages = 1;
