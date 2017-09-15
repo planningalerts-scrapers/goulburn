@@ -26,6 +26,13 @@ $da_page  = $url_base . "eTrackApplicationSearchResults.aspx?Field=S&Period=" .$
 $info_url = $url_base . "eTrackApplicationDetails.aspx?r=P1.WEBGUEST&f=%24P1.ETR.APPDET.VIW&ApplicationId=";
 
 $browser = new PGBrowser();
+$browser->setTimeout(30);
+if ( getenv('MORPH_PROXY') ) {
+    @list($proxy, $port, $user, $pass) = explode(':', getenv('MORPH_PROXY'));
+    $browser->setProxy($proxy, $port, $user, $pass);
+    echo "using MORPH_PROXY settings\r\n";
+}
+
 $page = $browser->get($da_page);
 $dom = HtmlDomParser::str_get_html($page->html);
 
